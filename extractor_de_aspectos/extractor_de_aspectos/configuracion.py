@@ -11,8 +11,8 @@ class Configuracion(object):
         Constructor
         '''
         #Aqui debe poner la direccion de la carpeta raiz de CoreNLP (donde se encuentra stanford-corenlp-3.9.1.jar)
-        self._direccion_corenlp = "/home/david/Desktop/tesis/corenlp"
-        self._path_dict_aspectos = "/home/david/Desktop/tesis/Tesis-Analisis-Aspectos/extractor_de_aspectos/extractor_de_aspectos/diccionario_de_aspectos.json"
+        self._direccion_corenlp = "path/a/corenlp"
+        self._path_dict_aspectos = "./diccionario_de_aspectos.json"
     
     def get_direccion_corenlp(self): return self._direccion_corenlp
     

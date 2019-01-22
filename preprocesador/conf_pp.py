@@ -2,9 +2,9 @@ class Configuracion():
 
     def __init__(self):
         # path/a/core/nlp
-        self._dir_corenlp = "/home/david/Desktop/tesis/corenlp"
+        self._dir_corenlp = "path/a/corenlp"
         # path/a/stopwords.txt
-        self._stopwords = "/home/david/Desktop/tesis/Tesis-Analisis-Aspectos/preprocesamiento/stopwords.txt"
+        self._stopwords = "./stopwords.txt"
 
     def get_dir_corenlp(self): return self._dir_corenlp
     def get_stopwords(self): return self._stopwords
