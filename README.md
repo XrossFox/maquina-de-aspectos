@@ -10,7 +10,7 @@ ___
 
 ## Uso de los Modulos:
 
-Nota: se incluye un archivo _requirements.txt_ con la lista de dependencias necesarias.
+Nota: se incluye un archivo _requirements.txt_ con la lista de dependencias necesarias. [En este link de google drive se pueden encontrar comentarios extraidos de Stack Overflow y Hacker News más un dataset con comentarios etiquetados para entrenar modelos.](https://drive.google.com/file/d/1MnMbuxQIL5CWyFKxNGhsysql2ca2Mi1T/view?usp=sharing)
 
 ___
 ### Recolector de Comentarios
