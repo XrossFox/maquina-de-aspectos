@@ -134,7 +134,7 @@ class Clasificador(object):
                     # Si la lista de strings en la llave nombre_aspecto no esta vacia.
                     if aspectos[nombre_aspecto]:
                         com_strings = " ".join(aspectos[nombre_aspecto])
-                        polaridad = mod_en.clasificar_comentario(com_strings)
+                        polaridad = mod_en.clasificar_comentario(com_strings, neutro=True)
                     tmp_aspectos[nombre_aspecto] = polaridad
                 # agregamos el dict con los aspectos evaluados al dict de tecnologias
                 dict_polaridades[tecnologia].append(tmp_aspectos)

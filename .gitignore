@@ -3,3 +3,6 @@ __pycache__
 .pydevproject
 .settings
 api_rest/api_rest/data/modelos_entrenados/*
+api_rest/api_rest/data/bases_datos/*
+api_rest/api_rest/data/comentarios/*
+api_rest/api_rest/data/dataset_entrenamiento/*

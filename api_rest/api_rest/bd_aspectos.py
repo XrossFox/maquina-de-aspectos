@@ -11,13 +11,13 @@ class Aspectos(Model):
     """
     id = AutoField(primary_key=True)
     tecnologia = CharField()
-    avail_scal = BooleanField(null=True)
-    maintainability = BooleanField(null=True)
-    performance = BooleanField(null=True)
-    reliability = BooleanField(null=True)
-    deployability = BooleanField(null=True)
-    securability = BooleanField(null=True)
-    interoperability = BooleanField(null=True)
+    avail_scal = SmallIntegerField(null=True)
+    maintainability = SmallIntegerField(null=True)
+    performance = SmallIntegerField(null=True)
+    reliability = SmallIntegerField(null=True)
+    deployability = SmallIntegerField(null=True)
+    securability = SmallIntegerField(null=True)
+    interoperability = SmallIntegerField(null=True)
             
     class Meta:
         database = db
