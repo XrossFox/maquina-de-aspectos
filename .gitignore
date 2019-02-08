@@ -1,2 +1,5 @@
-__pycache__/*.project
-.pydevproject
+__pycache__
+.project
+.pydevproject
+.settings
+api_rest/api_rest/data/modelos_entrenados/*

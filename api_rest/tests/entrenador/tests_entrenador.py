@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
 
     def test__lector_len(self):
         """
-        El método lector debe leer todos los archivos con extension .json en la carpeta indicada.
+        El mÃ©todo lector debe leer todos los archivos con extension .json en la carpeta indicada.
         Los datasets son una lista tienen la siguiente sinaxis:
             
             [[sentimiento,"comentario"],[sentimiento2, "comentario2"]]
@@ -47,7 +47,7 @@ class Test(unittest.TestCase):
     
     def test__lector_syn(self):
         """
-        El método lector debe leer todos los archivos con extension .json en la carpeta indicada.
+        El mÃ©todo lector debe leer todos los archivos con extension .json en la carpeta indicada.
         Los datasets es una lista tienen la siguiente sinaxis:
             
             [[sentimiento,"comentario"],[sentimiento2, "comentario2"]]
@@ -155,12 +155,14 @@ class Test(unittest.TestCase):
         
     def test_inicio(self):
         """
-        Método de control que maneja el flujo del proceso
+        MÃ©todo de control que maneja el flujo del proceso
         """
         conf = configuracion_api_rest.Configuracion()
         directorio = self.entrenador.inicio(dir_datasets_entrenamiento="./test_iniciar",
                                             dir_modelos_entrenados=conf.dir_modelos_entrenados)
         self.assertTrue(os.path.isfile(directorio))
+
+    
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

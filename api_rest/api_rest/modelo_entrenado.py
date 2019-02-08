@@ -10,11 +10,12 @@ class ModeloEntrenado(object):
         self.mod_entrenado = mod_entrenado
         self.f_score = f_score
     
-    def clasificar_comentario(self, comentario):
+    def clasificar_comentario(self, comentario, neutro=False):
         """
         Clasifica un comentario asignandole una polaridad.
         @param comentario: un string.
-        @return: 1 si es positivo | 0 si es negativo. 
+        @return: 1 si es positivo | 0 si es negativo. Si comentarios neutros estan activados, regresa:
+        1 para positivo, 0 para neutro y -1 para negativo. 
         """
         # vocabulario del comentario de acuerdo al vocabulario del dataset
         com_voc = self.vocabulario.transform([comentario])
@@ -22,8 +23,18 @@ class ModeloEntrenado(object):
         com_vec = self.idf_vector.transform(com_voc)
         # probabilidad de estar en una de dos clases. Si neg tiene mayor prob de ser negativo, regresa 0. Si  no, regresa 1
         neg, pos = self.mod_entrenado.predict_proba(com_vec)[0]
+        # si se permiten neutros:
+        if neutro:
+            if pos > 0.50380415:
+                return 1
+            elif neg < 0.49619585:
+                return -1
+            return 0
+        # si solo se esperan pos y neg:
         if neg > pos:
             return 0
         return 1
+    
+    
         
         
