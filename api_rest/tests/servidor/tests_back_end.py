@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
         
     def tests_query_tecnologia_python_1(self):
         """
-        Hace un query a la base de datos y debe devolver: nombre de tecnología, porcentaje de positivos vs negativos, total de aspectos evaluados.
+        Hace un query a la base de datos y debe devolver: nombre de tecnología, porcentaje de positivos vs negativos vs neutro, total de aspectos evaluados.
         En forma de un objeto json (un dict python al parsearlo).
         """
         lobe = back_end.BackEnd("./db_tests_3")
@@ -48,6 +48,7 @@ class Test(unittest.TestCase):
         self.assertTrue("python" == diccionario["nombre"])
         self.assertTrue(isinstance(diccionario["total"], int))
         self.assertTrue(isinstance(diccionario["total_pos"], int))
+        self.assertTrue(isinstance(diccionario["total_neu"], int))
         self.assertTrue(isinstance(diccionario["total_neg"], int))
         self.assertTrue(isinstance(diccionario["p_pos"], float))
         self.assertTrue(isinstance(diccionario["p_neg"], float))

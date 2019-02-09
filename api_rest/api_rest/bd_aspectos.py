@@ -55,56 +55,72 @@ class BDAspectos():
             "total": 0,
             "total_pos": 0,
             "total_neg": 0,
+            "total_neu": 0,            
             "p_pos": 0.0,
             "p_neg": 0.0,
+            "p_neu": 0.0,         
             "avail_scal": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,
             },
             "maintainability": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,                
             },
             "performance": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,                
             },
             "reliability": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,                
             },
             "deployability": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,                
             },
             "securability": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,                
             },
             "interoperability": {
                 "total": 0,
                 "total_pos": 0,
                 "total_neg": 0,
+                "total_neu": 0,                   
                 "p_pos": 0.0,
-                "p_neg": 0.0
+                "p_neg": 0.0,
+                "p_neu": 0.0,                
             }
         }
 
@@ -151,56 +167,70 @@ class BDAspectos():
         """
         # actualiza los contadores de totales si no son None.
         if fila.avail_scal != None:
-            if fila.avail_scal:
+            if fila.avail_scal == 1:
                 dict_aspectos["avail_scal"]["total_pos"] += 1
+            elif fila.avail_scal == 0:
+                dict_aspectos["avail_scal"]["total_neu"] += 1
             else:
                 dict_aspectos["avail_scal"]["total_neg"] += 1
                 
             dict_aspectos["avail_scal"]["total"] += 1
             
         if fila.maintainability != None:
-            if fila.maintainability:
+            if fila.maintainability == 1:
                 dict_aspectos["maintainability"]["total_pos"] += 1
+            elif fila.maintainability == 0:
+                dict_aspectos["maintainability"]["total_neu"] += 1
             else:
                 dict_aspectos["maintainability"]["total_neg"] += 1
 
             dict_aspectos["maintainability"]["total"] += 1
             
         if fila.performance != None:
-            if fila.performance:
+            if fila.performance == 1:
                 dict_aspectos["performance"]["total_pos"] += 1
+            elif fila.performance == 0:
+                dict_aspectos["performance"]["total_neu"] += 1                
             else:
                 dict_aspectos["performance"]["total_neg"] += 1
                 
             dict_aspectos["performance"]["total"] += 1
             
         if fila.reliability != None:
-            if fila.reliability:
+            if fila.reliability == 1:
                 dict_aspectos["reliability"]["total_pos"] += 1
+            elif fila.reliability == 0:
+                dict_aspectos["reliability"]["total_neu"] += 1                     
             else:
                 dict_aspectos["reliability"]["total_neg"] += 1
                 
             dict_aspectos["reliability"]["total"] += 1
             
         if fila.deployability != None:
-            if fila.deployability:
+            if fila.deployability == 1:
                 dict_aspectos["deployability"]["total_pos"] += 1
+            elif fila.deployability == 0:
+                dict_aspectos["deployability"]["total_neu"] += 1                   
             else:
                 dict_aspectos["deployability"]["total_neg"] += 1
                 
             dict_aspectos["deployability"]["total"] += 1
             
         if fila.securability != None:
-            if fila.securability:
+            if fila.securability == 1:
                 dict_aspectos["securability"]["total_pos"] += 1
+            elif fila.securability == 0:
+                dict_aspectos["securability"]["total_neu"] += 1                     
             else:
                 dict_aspectos["securability"]["total_neg"] += 1
                 
             dict_aspectos["securability"]["total"] += 1
             
         if fila.interoperability != None:
-            if fila.interoperability:
+            if fila.interoperability == 1:
                 dict_aspectos["interoperability"]["total_pos"] += 1
+            elif fila.interoperability == 0:
+                dict_aspectos["interoperability"]["total_neu"] += 1                   
             else:
                 dict_aspectos["interoperability"]["total_neg"] += 1
                 
@@ -217,44 +247,58 @@ class BDAspectos():
         # porcentajes avail_scal
         dict_aspectos["avail_scal"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
                                                                     tot_pos=dict_aspectos["avail_scal"]["total_pos"])
-        dict_aspectos["avail_scal"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+        dict_aspectos["avail_scal"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
                                                                     tot_pos=dict_aspectos["avail_scal"]["total_neg"])
+        dict_aspectos["avail_scal"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])       
         
         # porcentajes maintainability
         dict_aspectos["maintainability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["maintainability"]["total"],
                                                                     tot_pos=dict_aspectos["maintainability"]["total_pos"])
-        dict_aspectos["maintainability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["maintainability"]["total"],
+        dict_aspectos["maintainability"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["maintainability"]["total"],
                                                                     tot_pos=dict_aspectos["maintainability"]["total_neg"])
+        dict_aspectos["maintainability"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])        
         
         # porcentajes performance
         dict_aspectos["performance"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["performance"]["total"],
                                                                     tot_pos=dict_aspectos["performance"]["total_pos"])
-        dict_aspectos["performance"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["performance"]["total"],
+        dict_aspectos["performance"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["performance"]["total"],
                                                                     tot_pos=dict_aspectos["performance"]["total_neg"])
+        dict_aspectos["performance"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])         
 
         # porcentajes reliability
         dict_aspectos["reliability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["reliability"]["total"],
                                                                     tot_pos=dict_aspectos["reliability"]["total_pos"])
-        dict_aspectos["reliability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["reliability"]["total"],
+        dict_aspectos["reliability"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["reliability"]["total"],
                                                                     tot_pos=dict_aspectos["reliability"]["total_neg"])
+        dict_aspectos["reliability"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])        
 
         # porcentajes deployability
         dict_aspectos["deployability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["deployability"]["total"],
                                                                     tot_pos=dict_aspectos["deployability"]["total_pos"])
-        dict_aspectos["deployability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["deployability"]["total"],
+        dict_aspectos["deployability"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["deployability"]["total"],
                                                                     tot_pos=dict_aspectos["deployability"]["total_neg"])
+        dict_aspectos["deployability"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])          
         
         # porcentajes securability
         dict_aspectos["securability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["securability"]["total"],
                                                                     tot_pos=dict_aspectos["securability"]["total_pos"])
-        dict_aspectos["securability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["securability"]["total"],
+        dict_aspectos["securability"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["securability"]["total"],
                                                                     tot_pos=dict_aspectos["securability"]["total_neg"])
+        dict_aspectos["securability"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])          
         
         # porcentajes interoperability
         dict_aspectos["interoperability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["interoperability"]["total"],
                                                                     tot_pos=dict_aspectos["interoperability"]["total_pos"])
-        dict_aspectos["interoperability"]["p_pos"] = self._saca_porcentajes(total=dict_aspectos["interoperability"]["total"],
+        dict_aspectos["interoperability"]["p_neg"] = self._saca_porcentajes(total=dict_aspectos["interoperability"]["total"],
                                                                     tot_pos=dict_aspectos["interoperability"]["total_neg"])
+        dict_aspectos["interoperability"]["p_neu"] = self._saca_porcentajes(total=dict_aspectos["avail_scal"]["total"],
+                                                                    tot_pos=dict_aspectos["avail_scal"]["total_neu"])          
         return dict_aspectos
     
     def _aux_totales_general(self, dict_aspectos):
@@ -273,12 +317,19 @@ class BDAspectos():
                 dict_aspectos["deployability"]["total_neg"],dict_aspectos["securability"]["total_neg"],
                 dict_aspectos["interoperability"]["total_neg"]])
         
-        dict_aspectos["total"] = dict_aspectos["total_pos"] + dict_aspectos["total_neg"]
+        dict_aspectos["total_neu"] = sum([dict_aspectos["avail_scal"]["total_neu"],dict_aspectos["maintainability"]["total_neu"],
+                dict_aspectos["performance"]["total_neu"],dict_aspectos["reliability"]["total_neu"],
+                dict_aspectos["deployability"]["total_neu"],dict_aspectos["securability"]["total_neu"],
+                dict_aspectos["interoperability"]["total_neu"]])
+        
+        dict_aspectos["total"] = dict_aspectos["total_pos"] + dict_aspectos["total_neg"] + dict_aspectos["total_neu"]
         
         dict_aspectos["p_pos"] = self._saca_porcentajes(total=dict_aspectos["total"],
                                                         tot_pos=dict_aspectos["total_pos"])
         dict_aspectos["p_neg"] = self._saca_porcentajes(total=dict_aspectos["total"],
                                                         tot_pos=dict_aspectos["total_neg"])
+        dict_aspectos["p_neu"] = self._saca_porcentajes(total=dict_aspectos["total"],
+                                                        tot_pos=dict_aspectos["total_neu"])
         
         return dict_aspectos
     

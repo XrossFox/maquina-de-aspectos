@@ -112,7 +112,7 @@ class Clasificador(object):
                 dict_aspectos[tecnologia].append(aspectos)
         return dict_aspectos
     
-    def _clasificar_aspectos(self, dict_aspectos, mod_en):
+    def _clasificar_aspectos(self, dict_aspectos, mod_en, neutro=False):
         """
         Clasifica los aspectos de los comentarios.
         @param dict_aspectos: un dict donde la llave es el nombre de la tecnología y el valor es una lista de dicts, donde
@@ -134,13 +134,13 @@ class Clasificador(object):
                     # Si la lista de strings en la llave nombre_aspecto no esta vacia.
                     if aspectos[nombre_aspecto]:
                         com_strings = " ".join(aspectos[nombre_aspecto])
-                        polaridad = mod_en.clasificar_comentario(com_strings, neutro=True)
+                        polaridad = mod_en.clasificar_comentario(com_strings, neutro=neutro)
                     tmp_aspectos[nombre_aspecto] = polaridad
                 # agregamos el dict con los aspectos evaluados al dict de tecnologias
                 dict_polaridades[tecnologia].append(tmp_aspectos)
         return dict_polaridades
     
-    def iniciar_clasificacion(self, dir_modelos_entrenados, dir_comentarios):
+    def iniciar_clasificacion(self, dir_modelos_entrenados, dir_comentarios, neutro=False):
         """
         Inicia la clasificación de los comentarios, los inserta en una base de datos SQLite en disco duro.
         Requiere que se edite la dirección de la carpeta de los comentarios, las bases de datos y los modelos entrenados
@@ -156,7 +156,7 @@ class Clasificador(object):
         # extraer aspectos
         dict_aspectos = self._extraer_aspectos(comentarios)
         # clasificar polaridad sentimental de los aspectos
-        dict_polaridades = self._clasificar_aspectos(dict_aspectos, modelo)
+        dict_polaridades = self._clasificar_aspectos(dict_aspectos, modelo, neutro)
         # creacion e insercion en la base de datos
         base_datos = bd_aspectos.BDAspectos()
         base_datos.insertar_a_tabla(dict_polaridades)

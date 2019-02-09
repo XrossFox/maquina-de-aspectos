@@ -14,7 +14,7 @@ class ModeloEntrenado(object):
         """
         Clasifica un comentario asignandole una polaridad.
         @param comentario: un string.
-        @return: 1 si es positivo | 0 si es negativo. Si comentarios neutros estan activados, regresa:
+        @return: 1 si es positivo o -1 si es negativo.| Si comentarios neutros estan activados, regresa:
         1 para positivo, 0 para neutro y -1 para negativo. 
         """
         # vocabulario del comentario de acuerdo al vocabulario del dataset
@@ -24,15 +24,22 @@ class ModeloEntrenado(object):
         # probabilidad de estar en una de dos clases. Si neg tiene mayor prob de ser negativo, regresa 0. Si  no, regresa 1
         neg, pos = self.mod_entrenado.predict_proba(com_vec)[0]
         # si se permiten neutros:
+        print("comentario: {} - pos: {} - neg: {}".format(comentario, pos, neg))
         if neutro:
-            if pos > 0.50380415:
+            print("Neutros activados")
+            if pos > 0.497:
+                print("positivo")
                 return 1
-            elif neg < 0.49619585:
+            elif neg > 0.504:
+                print("negativo")
                 return -1
-            return 0
+            else: 
+                print("neutral")
+                return 0
         # si solo se esperan pos y neg:
         if neg > pos:
-            return 0
+            print("Neutros desactivados")
+            return -1
         return 1
     
     
