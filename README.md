@@ -10,7 +10,7 @@ ___
 
 ## Uso de los Modulos:
 
-Nota: se incluye un archivo _requirements.txt_ con la lista de dependencias necesarias. [En este link de google drive se pueden encontrar comentarios extraidos de Stack Overflow y Hacker News más un dataset con comentarios etiquetados para entrenar modelos.](https://drive.google.com/file/d/1MnMbuxQIL5CWyFKxNGhsysql2ca2Mi1T/view?usp=sharing)
+Nota: se incluye un archivo _requirements.txt_ con la lista de dependencias necesarias. [En este link de google drive se pueden encontrar comentarios extraidos de Stack Overflow y Hacker News más un dataset con comentarios etiquetados para entrenar modelos.](https://drive.google.com/file/d/13aTRlbtPk0YsAniDk4x0PcMNuBnkkhar/view?usp=sharing).
 
 ___
 ### Recolector de Comentarios
@@ -78,7 +78,7 @@ Options:
 ```
 
 ___
-### Extractor de Aspectos
+### Detector de Aspectos
 Este modulo es una dependencia para _Api Rest_.
 + Para el correcto funcionamiento de este modulo solo es necesario editar la dirección a _Stanford CoreNLP_ en _configuracion.py_ en la linea 14:
 
@@ -94,7 +94,7 @@ self._direccion_corenlp = "path/a/corenlp"
 "Aspecto2":["sinonimo1","sinonimo2","sinonimoN"]
 }
 ```
-Notese que un diccionario de aspectos es provisto _por default_. Este diccionario esta hecho para extraer los aspectos de atributos de calidad de software.
+Notese que un diccionario de aspectos es provisto _por default_. Este diccionario esta hecho para extraer los aspectos de atributos de calidad de software. Este diccionario de aspectos se encuentra en la carpeta raíz del modulo. La dirección del modulo puede ser editada en _configuracion.py_ de ser necesario.
 
 Este modulo fue pensado para funcionar de manera independiente de ser necesario, como una libreria adicional. Es posible implementarla en otros sistemas de ser necesario.
 
